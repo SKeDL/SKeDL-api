@@ -15,7 +15,6 @@ PreCommit:
     flags: ['--update']
   BundleCheck:
     enabled: true
-
   Fasterer:
     enabled: true
     exclude:
@@ -35,7 +34,7 @@ PreCommit:
 
   RuboCop:
     enabled: true
-  #    on_warn: fail # Treat all warnings as failures
+    on_warn: fail # Treat all warnings as failures
   ScssLint:
     enabled: true
   MarkdownLint:
