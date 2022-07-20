@@ -150,6 +150,100 @@
           null
         ]
       },
+      "/Users/alybadawy/repos/SKeDL/SKeDL-api/app/controllers/account_controller.rb": {
+        "lines": [
+          1,
+          1,
+          4,
+          4,
+          2,
+          null,
+          2,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          4,
+          null,
+          null
+        ]
+      },
+      "/Users/alybadawy/repos/SKeDL/SKeDL-api/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          2,
+          2,
+          null,
+          2,
+          null,
+          null,
+          1,
+          6,
+          48,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/alybadawy/repos/SKeDL/SKeDL-api/app/controllers/concerns/record_exception_handler.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/alybadawy/repos/SKeDL/SKeDL-api/app/controllers/concerns/jwt_exception_handler.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null
+        ]
+      },
       "/Users/alybadawy/repos/SKeDL/SKeDL-api/app/controllers/users_controller.rb": {
         "lines": [
           1,
@@ -212,71 +306,12 @@
           null
         ]
       },
-      "/Users/alybadawy/repos/SKeDL/SKeDL-api/app/controllers/application_controller.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          1,
-          null,
-          1,
-          null,
-          1,
-          null,
-          1,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
-          1,
-          0,
-          0,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/alybadawy/repos/SKeDL/SKeDL-api/app/controllers/concerns/record_exception_handler.rb": {
+      "/Users/alybadawy/repos/SKeDL/SKeDL-api/app/serializers/user_serializer.rb": {
         "lines": [
           1,
           1,
           null,
           1,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/alybadawy/repos/SKeDL/SKeDL-api/app/controllers/concerns/jwt_exception_handler.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          1,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
           null
         ]
       },
@@ -322,19 +357,8 @@
         ],
         "branches": {
         }
-      },
-      "/Users/alybadawy/repos/SKeDL/SKeDL-api/app/serializers/user_serializer.rb": {
-        "lines": [
-          0,
-          0,
-          null,
-          0,
-          0
-        ],
-        "branches": {
-        }
       }
     },
-    "timestamp": 1658276799
+    "timestamp": 1658277031
   }
 }
