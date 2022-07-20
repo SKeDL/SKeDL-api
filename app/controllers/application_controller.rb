@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::API
   include JSONAPI::Deserialization
+  include RecordExceptionHandler
+  include JwtExceptionHandler
 
   before_action :underscore_params!
 
