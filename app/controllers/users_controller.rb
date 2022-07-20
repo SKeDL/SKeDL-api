@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
-  include JSONAPI::Deserialization
-
   before_action :set_user, only: %i[ show update destroy ]
-
+  before_action :authenticate_admin!
   # GET /users
   def index
     @users = User.all
