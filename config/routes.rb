@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  post "account", to: "account#create" # Sign Up
+  put "account", to: "account#update" # update account info
+  delete "account", to: "account#destroy" # delete account
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :users
+
+  resources :sessions, except: [:update]
+  put "sessions", to: "sessions#update"
 end

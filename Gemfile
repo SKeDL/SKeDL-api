@@ -6,7 +6,6 @@ gem "rails", "~> 7.0.3", ">= 7.0.3.1"
 
 gem "bcrypt", "~> 3.1.7"
 gem "bootsnap", require: false
-gem "jbuilder"
 gem "jsonapi.rb"
 gem "jwt"
 gem "lograge"
@@ -23,6 +22,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # gem "redis", "~> 4.0"
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
+# gem "jbuilder"
 
 group :development, :test do
   gem 'brakeman'
