@@ -65,7 +65,7 @@ RSpec.describe AuthHelper, type: :helper do
                                   @data[:refresh_token],
                                   Faker::Internet.ip_v4_address,
                                   "Invalid User-agent")
-        }.to raise_error("AuthHelper::ExpiredTokenError")
+        }.to raise_error(AuthHelper::WrongCredentialsError)
         current_sesssion.reload
         expect(current_sesssion.logged_out).to be_truthy
       end
