@@ -1,11 +1,10 @@
 class ApplicationController < ActionController::API
   include JSONAPI::Deserialization
 
+  include JwtExceptionHandler
   include JwtAuthenticatable
 
   include RecordExceptionHandler
-  include JwtExceptionHandler
-  include AuthExceptionHandler
 
   before_action :underscore_params!
 
@@ -20,7 +19,7 @@ class ApplicationController < ActionController::API
 
   def underscore_params!
     params.deep_transform_keys! do |key|
-      ["Access-Token", "Refresh-Token"].include?(key) ? key : key.underscore
+      ["AccessToken", "RefreshToken"].include?(key) ? key : key.underscore
     end
   end
 end

@@ -34,13 +34,13 @@ RSpec.describe AccountController, type: :request do
     context "with valid attributes" do
       it "creates a new User" do
         expect {
-          post "/api/account",
+          post "/account",
                params: { user: valid_attributes }, as: :json
         }.to change(User, :count).by(1)
       end
 
       it "renders a JSON response with the new user" do
-        post "/api/account", params: { user: valid_attributes }, as: :json
+        post "/account", params: { user: valid_attributes }, as: :json
         expect(response).to have_http_status(:created)
         parsed_body = JSON.parse(response.body)
         expect(parsed_body["data"]["type"]).to eq("user")
@@ -50,13 +50,13 @@ RSpec.describe AccountController, type: :request do
     context "with invalid aatributes" do
       it "doesn't create a new User" do
         expect {
-          post "/api/account",
+          post "/account",
                params: { user: invalid_attributes }, as: :json
         }.not_to change(User, :count)
       end
 
       it "renders a JSON response with the error" do
-        post "/api/account", params: { user: invalid_attributes }, as: :json
+        post "/account", params: { user: invalid_attributes }, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
         parsed_body = JSON.parse(response.body)
         expect(parsed_body).to have_key("errors")
@@ -78,15 +78,15 @@ RSpec.describe AccountController, type: :request do
     context "with valid JWT and password" do
       context "with valid attributes" do
         it "returns http success" do
-          put "/api/account", headers: { Authorization: "Bearer #{@jwt}" },
-                              params: valid_user_attributes, as: :json
+          put "/account", headers: { Authorization: "Bearer #{@jwt}" },
+                          params: valid_user_attributes, as: :json
           expect(response).to have_http_status(:success)
         end
 
         it "renders a JSON response with the updated user" do
           old_password_digest = @user.password_digest
-          put "/api/account", headers: { Authorization: "Bearer #{@jwt}" },
-                              params: valid_user_attributes, as: :json
+          put "/account", headers: { Authorization: "Bearer #{@jwt}" },
+                          params: valid_user_attributes, as: :json
           parsed_body = JSON.parse(response.body)
           @user.reload
           expect(parsed_body["data"]["attributes"]["email"]).to eq(valid_attributes[:email])
@@ -97,8 +97,8 @@ RSpec.describe AccountController, type: :request do
 
       context "with invalid attributes" do
         it "returns http status: unprocessable entity" do
-          put "/api/account", headers: { Authorization: "Bearer #{@jwt}" },
-                              params: invalid_user_attributes, as: :json
+          put "/account", headers: { Authorization: "Bearer #{@jwt}" },
+                          params: invalid_user_attributes, as: :json
           expect(response).to have_http_status(:unprocessable_entity)
         end
       end
@@ -107,24 +107,24 @@ RSpec.describe AccountController, type: :request do
     context "with valid JWT and invalid password" do
       it "doesn't update the user" do
         old_user_state = @user
-        put "/api/account", headers: { Authorization: "Bearer #{@jwt}" },
-                            params: valid_user_attributes, as: :json
+        put "/account", headers: { Authorization: "Bearer #{@jwt}" },
+                        params: valid_user_attributes, as: :json
         @user.reload
         new_user_state = @user
         expect(new_user_state).to eq old_user_state
       end
 
       it "returns a forbidden status" do
-        put "/api/account", headers: { Authorization: "Bearer #{@jwt}" },
-                            params: invalid_password_attributes, as: :json
+        put "/account", headers: { Authorization: "Bearer #{@jwt}" },
+                        params: invalid_password_attributes, as: :json
         expect(response).to have_http_status(:forbidden)
       end
     end
 
     context "with invalid jwt" do
       it "returns a 401 unathoirzed" do
-        put "/api/account", headers: { Authorization: "Bearer invalid-jwt" },
-                            params: valid_user_attributes, as: :json
+        put "/account", headers: { Authorization: "Bearer invalid-jwt" },
+                        params: valid_user_attributes, as: :json
         expect(response).to have_http_status(:unauthorized)
       end
     end
@@ -142,38 +142,38 @@ RSpec.describe AccountController, type: :request do
 
     context "with valid jwt and password" do
       it "returns no content" do
-        delete "/api/account", headers: { Authorization: "Bearer #{@jwt}" }, params: { current_password: @user.password }
+        delete "/account", headers: { Authorization: "Bearer #{@jwt}" }, params: { current_password: @user.password }
         expect(response).to have_http_status(:no_content)
         expect(response.body).to eq ""
       end
 
       it "deletes the user from the users table" do
         expect {
-          delete "/api/account", headers: { Authorization: "Bearer #{@jwt}" },
-                                 params:  { current_password: @user.password }
+          delete "/account", headers: { Authorization: "Bearer #{@jwt}" },
+                             params:  { current_password: @user.password }
         }.to change(User, :count).by(-1)
       end
     end
 
     context "with valid jwt and invalid password" do
       it "returns http forbidden" do
-        delete "/api/account", headers: { Authorization: "Bearer #{@jwt}" },
-                               params:  { current_password: "invalid" }
+        delete "/account", headers: { Authorization: "Bearer #{@jwt}" },
+                           params:  { current_password: "invalid" }
         expect(response).to have_http_status(:forbidden)
       end
 
       it "doesn't deletes the user from the users table" do
         expect {
-          delete "/api/account", headers: { Authorization: "Bearer #{@jwt}" },
-                                 params:  { current_password: "invalid" }
+          delete "/account", headers: { Authorization: "Bearer #{@jwt}" },
+                             params:  { current_password: "invalid" }
         }.not_to change(User, :count)
       end
     end
 
     context "with invalid jwt" do
       it "returns a 401 unathoirzed" do
-        delete "/api/account", headers: { Authorization: "Bearer invalid-jwt" },
-                               params:  { current_password: @user.password }
+        delete "/account", headers: { Authorization: "Bearer invalid-jwt" },
+                           params:  { current_password: @user.password }
         expect(response).to have_http_status(:unauthorized)
       end
     end

@@ -150,7 +150,7 @@ Metrics/AbcSize:
 
 Metrics/BlockLength:
   CountComments: false
-  Max: 10
+  Max: 15
   IgnoredMethods:
     - context
     - describe

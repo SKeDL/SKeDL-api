@@ -44,7 +44,7 @@ module TokenHelper
         verify_expiration: true,
         verify_jti:        proc { |jti| session_from_valid_jti(jti) },
         algorithm:         ENV.fetch("HMAC_ALGO"),
-        exp_leeway:        120,
+        exp_leeway:        1,
       }
     )
   end

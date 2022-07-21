@@ -1,7 +1,6 @@
 module AuthHelper
   class AuthenticationError < StandardError; end
   class WrongCredentialsError < AuthenticationError; end
-  class ExpiredTokenError < AuthenticationError; end
   class RestrictedAccessError < AuthenticationError; end
 
   module_function
@@ -28,7 +27,7 @@ module AuthHelper
 
     if session.user_agent != user_agent
       session.update(logged_out: true)
-      raise ExpiredTokenError
+      raise WrongCredentialsError
     end
 
     refresh_token = SecureRandom.hex(32)

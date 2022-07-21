@@ -22,22 +22,22 @@ class SessionsController < ApplicationController
 
     login_data = AuthHelper.login(username, password, ip, user_agent)
 
-    response.headers["Access-Token"] = login_data[:jwt]
-    response.headers["Refresh-Token"] = login_data[:refresh_token]
-    response.headers["Expire-At"] = login_data[:exp]
+    render json: { AccessToken:  login_data[:jwt],
+                   RefreshToken: login_data[:refresh_token],
+                   ExpireAt:     login_data[:exp] }
   end
 
   def update
-    jwt = params["Access-Token"]
-    refresh_token = params["Refresh-Token"]
+    jwt = params["AccessToken"]
+    refresh_token = params["RefreshToken"]
     ip = request.ip
     user_agent = request.user_agent
 
     login_data = AuthHelper.refresh(jwt, refresh_token, ip, user_agent)
 
-    response.headers["Access-Token"] = login_data[:jwt]
-    response.headers["Refresh-Token"] = login_data[:refresh_token]
-    response.headers["Expire-At"] = login_data[:exp]
+    render json: { AccessToken:  login_data[:jwt],
+                   RefreshToken: login_data[:refresh_token],
+                   ExpireAt:     login_data[:exp] }
   end
 
   def destroy
